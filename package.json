@@ -12,12 +12,16 @@
     "@notion-stuff/blocks-html-parser": "^6.0.0",
     "@notion-stuff/blocks-markdown-parser": "^6.0.0",
     "@notionhq/client": "^1.0.4",
+    "framer-motion": "^6.3.2",
     "highlight.js": "^11.5.1",
     "marked": "^4.0.14",
     "next": "12.1.5",
+    "next-seo": "^5.4.0",
+    "next-themes": "^0.1.1",
     "prismjs": "^1.28.0",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "rgt": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "17.0.25",
