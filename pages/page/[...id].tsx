@@ -1,15 +1,15 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import { notion } from '../lib/notionBlocks';
-import { RenderBlocks } from '../lib/notionBlocks/render';
-import { Block, PageProperties } from '../lib/notionBlocks/types';
+import { notion } from '../../lib/notionBlocks';
+import { RenderBlocks } from '../../lib/notionBlocks/render';
+import { Block, PageProperties } from '../../lib/notionBlocks/types';
+import styles from '../../styles/Home.module.css';
 
-interface HomeProps {
+interface PageProps {
   pageProperties: PageProperties;
   pageBlocks: Block[];
 }
 
-const Home = ({ pageProperties, pageBlocks }: HomeProps) => {
+const Page = ({ pageProperties, pageBlocks }: PageProps) => {
   const title = pageProperties.properties.title?.title?.[0]?.plain_text;
 
   return (
@@ -28,9 +28,23 @@ const Home = ({ pageProperties, pageBlocks }: HomeProps) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
   const url = 'Front-End-Development-56c48726a7ee40918bb6359576452f49';
   const pageId = notion.getPageId(url);
+  const pagePaths = await notion.getAllPaths(pageId);
+
+  const paths = pagePaths.map((page) => ({
+    params: { id: [page] },
+  }));
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: blocking } will server-render pages
+  // on-demand if the path doesn't exist.
+  return { paths, fallback: 'blocking' };
+}
+
+export async function getStaticProps({ params }: { params: Record<string, string> }) {
+  const pageId = params.id;
   const pageProperties = await notion.getPageProperties(pageId);
   const pageBlocks = await notion.getPageBlocks(pageId);
   const parsedBlocks = await notion.populateBlockData(pageBlocks.results as Block[]);
@@ -40,7 +54,8 @@ export async function getStaticProps() {
       pageProperties,
       pageBlocks: parsedBlocks,
     },
+    revalidate: 10,
   };
 }
 
-export default Home;
+export default Page;
