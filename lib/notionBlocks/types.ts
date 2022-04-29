@@ -1,4 +1,4 @@
-import urlMetadata from "url-metadata";
+import urlMetadata from 'url-metadata';
 
 export interface BlockChildren {
   block: unknown;
@@ -33,7 +33,7 @@ export interface RichText {
 }
 
 export type BookmarkBlock = {
-  caption: []
+  caption: [];
   url: string;
 } & urlMetadata.Result;
 
@@ -45,20 +45,26 @@ export interface ChildPageBlock {
   last_edited_time: string;
   // created_by: { object: 'user', id: 'bb833d33-47ac-482e-92b4-18637d404b75' },
   // last_edited_by: { object: 'user', id: 'bb833d33-47ac-482e-92b4-18637d404b75' },
-  cover: string | null,
-  icon: { type: string, emoji: string },
+  cover: string | null;
+  icon: { type: string; emoji: string };
   parent: {
-    type: string,
-    page_id: string
-  },
-  archived: boolean,
+    type: string;
+    page_id: string;
+  };
+  archived: boolean;
   // properties: { title: [Object] },
-  url: string
+  url: string;
 }
 
 export interface Heading {
   color: string; // "default"
-  rich_text: RichText[]
+  rich_text: RichText[];
+}
+
+interface TodoBlock {
+  checked: boolean;
+  color: string;
+  rich_text: RichText[];
 }
 
 export interface Block {
@@ -78,6 +84,7 @@ export interface Block {
     id: string; // 'bb833d33-47ac-482e-92b4-18637d404b75'
   };
   bookmark?: BookmarkBlock;
+  to_do?: TodoBlock;
   child_page?: ChildPageBlock;
   heading_1?: Heading;
   heading_2?: Heading;
@@ -88,37 +95,37 @@ export interface Block {
   };
 }
 
-export type BlockType = 
-  | "paragraph" 
-  | "heading_1" 
-  | "heading_2" 
-  | "heading_3" 
-  | "bulleted_list_item" 
-  | "numbered_list_item" 
-  | "to_do" 
-  | "toggle" 
-  | "child_page" 
-  | "child_database" 
-  | "embed" 
-  | "image" 
-  | "video" 
-  | "file" 
-  | "pdf" 
-  | "bookmark" 
-  | "callout" 
-  | "quote" 
-  | "equation" 
-  | "divider" 
-  | "table_of_contents" 
-  | "column" 
-  | "column_list" 
-  | "link_preview" 
-  | "synced_block" 
-  | "template" 
-  | "link_to_page" 
-  | "table"
-  | "table_row"
-  | "unsupported"
+export type BlockType =
+  | 'paragraph'
+  | 'heading_1'
+  | 'heading_2'
+  | 'heading_3'
+  | 'bulleted_list_item'
+  | 'numbered_list_item'
+  | 'to_do'
+  | 'toggle'
+  | 'child_page'
+  | 'child_database'
+  | 'embed'
+  | 'image'
+  | 'video'
+  | 'file'
+  | 'pdf'
+  | 'bookmark'
+  | 'callout'
+  | 'quote'
+  | 'equation'
+  | 'divider'
+  | 'table_of_contents'
+  | 'column'
+  | 'column_list'
+  | 'link_preview'
+  | 'synced_block'
+  | 'template'
+  | 'link_to_page'
+  | 'table'
+  | 'table_row'
+  | 'unsupported';
 
 export interface PageProperties {
   archived: boolean;
@@ -131,7 +138,7 @@ export interface PageProperties {
   icon: {
     type: string;
     emoji: string;
-  }
+  };
   id: string;
   last_edited_time: string; // "2022-04-24T18:04:00.000Z"
   last_edited_by: {
@@ -140,15 +147,15 @@ export interface PageProperties {
   };
   object: string;
   parent: {
-    type: string; // 'page_id', 
+    type: string; // 'page_id',
     page_id: string; // '09950758-68ea-454f-802f-3bf8580ccc94'
-  }
+  };
   properties: {
     title: {
       id: string;
       type: string;
-      title: RichText[]
-    }
-  }
+      title: RichText[];
+    };
+  };
   url: string; // "https://www.notion.so/Front-End-Development-56c48726a7ee40918bb6359576452f49"
 }

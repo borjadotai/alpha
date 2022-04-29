@@ -38,7 +38,7 @@ export default function Main({ meta, children }: IMainProps) {
           </FadeIn>
         </main>
 
-        <div className="text-center py-8 text-sm flex flex-col flex-grow-0">
+        <div className="text-center py-8 text-sm flex flex-col flex-grow-0" id="end-of-page">
           <p>Copyright {new Date().getFullYear()} © Borja Leiva</p>
           <p>
             Made with

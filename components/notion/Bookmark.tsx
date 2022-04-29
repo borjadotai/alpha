@@ -1,6 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
+export interface BookmarkProps {
+  url: string;
+  title: string;
+  description: string;
+  image: string;
+}
 
-export default function Bookmark({ url = '', title = '', description = '', image = '' }: Record<string, string>) {
+export default function Bookmark({ url = '', title = '', description = '', image = '' }: BookmarkProps) {
   const truncatedTitle = description.length > 70 ? `${description.substring(0, 70)}...` : description;
   const maxDescLength = description.length > 70 ? 70 : 120;
   const truncatedDesc =

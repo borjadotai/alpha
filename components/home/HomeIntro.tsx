@@ -1,5 +1,8 @@
 import Image from 'next/image';
+import { useContext } from 'react';
+import { ChevronDown } from 'react-feather';
 import GradientText from '../GradientText';
+import { ThemeContext } from '../Kbar';
 
 const bGradient = { dir: 'left-to-right', from: '#00d2ff', to: '#3a7bd5' };
 const gGradient = { dir: 'left-to-right', from: '#a8ff78', to: '#78ffd6' };
@@ -10,6 +13,10 @@ const BusinessGradient = () => <GradientText highlight bg={gGradient}>{`business
 const ProductGradient = () => <GradientText highlight bg={rGradient}>{`product design`}</GradientText>;
 
 export default function HomeIntro() {
+  const [isDark, _] = useContext(ThemeContext);
+  const darkLogos = '/assets/images/companies.png';
+  const lightLogos = '/assets/images/companies-light.png';
+  const logosUrl = isDark ? darkLogos : lightLogos;
   return (
     <div className="mt-6 sm:mt-4 flex flex-col justify-start items-start text-center sm:text-left">
       <div className="flex flex-col-reverse sm:flex-row items-center sm:justify-between w-full">
@@ -37,6 +44,24 @@ export default function HomeIntro() {
         I’m a product engineer, originally from Spain, currently based in London. <br /> Software engineer by trade with
         a passion for <BusinessGradient /> {' & '} <ProductGradient />.
       </p>
+      <p className="w-full text-gray-600 text-sm mt-10 mb-3">SOME COMPANIES I HAVE DONE WORK FOR</p>
+      <div className="w-full flex items-center border-t border-neutral-200 dark:border-neutral-900 pt-8">
+        <Image
+          src={logosUrl}
+          blurDataURL={logosUrl}
+          alt="Logos of companies Borja Leiva has done work for"
+          width={760}
+          height={32}
+          placeholder="blur"
+        />
+      </div>
+      <a
+        href="#end-of-page"
+        className="mt-8 mb-4 border-t border-neutral-200 dark:border-neutral-900 pt-10 pb-4 flex flex-col w-full items-center text-gray-600"
+      >
+        <p>Read my life story from the early days all the way til today.</p>
+        <ChevronDown size={24} aria-label="Activity Info" />
+      </a>
     </div>
   );
 }
