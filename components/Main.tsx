@@ -1,3 +1,4 @@
+import { useKBar } from 'kbar';
 import React, { ReactNode, useState } from 'react';
 
 import FadeIn from '../components/FadeIn';
@@ -14,7 +15,12 @@ type IMainProps = {
 
 export default function Main({ meta, children }: IMainProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const kbar = useKBar();
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+    kbar.query.toggle();
+  };
 
   return (
     <div className="min-h-screen antialiased w-full text-gray-700 dark:text-gray-500 bg-white dark:bg-black">
@@ -23,16 +29,13 @@ export default function Main({ meta, children }: IMainProps) {
         <div className="pt-8 pb-4 sm:pb-8 flex flex-row w-full justify-between items-center flex-grow-0">
           <IconButton />
           <NavMenu />
-          <HamburgerButton isOpen={isMenuOpen} toggle={toggleMenu} strokeWidth="2" width="24" height="24" />
+          {/* <HamburgerButton isOpen={isMenuOpen} toggle={toggleMenu} strokeWidth="2" width="24" height="24" /> */}
         </div>
 
         <main className="min-h-full flex-grow">
-          {isMenuOpen && <Menu />}
-          {!isMenuOpen && (
-            <FadeIn>
-              <div className="py-2 text-xl content">{children}</div>
-            </FadeIn>
-          )}
+          <FadeIn>
+            <div className="py-2 text-xl content">{children}</div>
+          </FadeIn>
         </main>
 
         <div className="text-center py-8 text-sm flex flex-col flex-grow-0">
@@ -48,7 +51,4 @@ export default function Main({ meta, children }: IMainProps) {
       </div>
     </div>
   );
-}
-function setTheme(arg0: string) {
-  throw new Error('Function not implemented.');
 }

@@ -43,13 +43,13 @@ export default function NavMenu() {
   const KButton = () => (
     <div className="relative">
       {!kbarOpened && (
-        <span className="absolute flex h-1 w-1 right-1">
-          <span className="absolute top-1.5 right-0.5 animate-ping inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
-          <span className="absolute top-2 right-1 inline-flex rounded-full h-full w-full bg-green-500"></span>
+        <span className="absolute flex h-1 w-1 -right-1 sm:right-1">
+          <span className="absolute top-0 sm:top-1.5 right-0.5 animate-ping inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
+          <span className="absolute top-0.5 sm:top-2 right-1 inline-flex rounded-full h-full w-full bg-green-500"></span>
         </span>
       )}
       <div
-        className="p-1 sm:px-3 sm:py-2 text-gray-500 outline-none dark:text-gray-400 print:hidden hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-10 transition-all rounded-md"
+        className="text-xl sm:text-lg p-1 sm:px-3 sm:py-2 text-gray-500 outline-none dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-10 transition-all rounded-md"
         onClick={onClick}
         onKeyDown={keyDownHandler}
         role="button"

@@ -51,7 +51,7 @@ export default function HamburgerButton({
   };
 
   return (
-    <button onClick={toggle} className="sm:hidden">
+    <button onClick={toggle} className="sm:hidden z-50">
       <motion.svg
         viewBox="0 0 24 24"
         overflow="visible"

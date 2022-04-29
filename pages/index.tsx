@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { notion } from '../lib/notionBlocks';
 import { RenderBlocks } from '../lib/notionBlocks/render';
 import { Block, PageProperties } from '../lib/notionBlocks/types';
+import HomeIntro from '../components/home/HomeIntro';
 import { Meta } from '../components/Meta';
 import Main from '../components/Main';
 
@@ -21,8 +22,8 @@ const Home = ({ pageProperties, pageBlocks }: HomeProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="post">
-        <h1>{title}</h1>
+      <main>
+        <HomeIntro />
         <RenderBlocks blocks={pageBlocks} />
       </main>
     </Main>

@@ -32,5 +32,5 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
     )
       return <span key={block.id} dangerouslySetInnerHTML={{ __html: BlockParser.parse([block]) }} />;
   });
-  return <Fragment>{elements}</Fragment>;
+  return <div className="post">{elements}</div>;
 }
