@@ -11,9 +11,9 @@ const ProductGradient = () => <GradientText highlight bg={rGradient}>{`product d
 
 export default function HomeIntro() {
   return (
-    <div className="sm:mt-4 flex flex-col justify-start items-start">
-      <div className="flex flex-row justify-between w-full">
-        <div className="flex flex-col">
+    <div className="mt-6 sm:mt-4 flex flex-col justify-start items-start text-center sm:text-left">
+      <div className="flex flex-col-reverse sm:flex-row items-center sm:justify-between w-full">
+        <div className="flex flex-col mt-4 sm:mt-0">
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight dark:text-white m-0 p-0">
             Hi <span className="animate-wiggle">👋 </span>
           </h1>
