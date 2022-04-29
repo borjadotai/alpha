@@ -1,6 +1,7 @@
-import React, { ButtonHTMLAttributes, useEffect } from 'react';
+import React, { ButtonHTMLAttributes, useContext, useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
 import FadeIn from './FadeIn';
+import { ThemeContext } from './Kbar';
 
 const SunIcon = () => (
   <svg
@@ -37,15 +38,18 @@ const MoonIcon = () => (
 );
 
 export default function ThemeButton({ ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
+  const [isDark, setIsDark] = useContext(ThemeContext);
   const [theme, setTheme] = useLocalStorage<string | undefined>('theme');
 
   useEffect(() => {
     if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
+      setIsDark(true);
     } else {
       document.documentElement.classList.remove('dark');
+      setIsDark(false);
     }
-  }, [theme]);
+  }, [setIsDark, theme]);
 
   return (
     <button
@@ -55,7 +59,7 @@ export default function ThemeButton({ ...props }: ButtonHTMLAttributes<HTMLButto
       className="w-10 h-10 bg-gray-200 rounded-md dark:bg-white dark:bg-opacity-10 flex items-center justify-center hover:ring-2 ring-gray-300 transition-all"
       {...props}
     >
-      {theme === 'dark' ? (
+      {isDark ? (
         <FadeIn>
           <SunIcon />
         </FadeIn>

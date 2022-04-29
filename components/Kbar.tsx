@@ -2,7 +2,7 @@ import type { ActionImpl } from 'kbar';
 import { KBarProvider, KBarPortal, KBarPositioner, KBarAnimator, KBarSearch, useMatches } from 'kbar';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import type { FC, ReactNode } from 'react';
+import { createContext, FC, ReactNode, useState } from 'react';
 import { useEffect, useCallback } from 'react';
 import { ArrowUpRight, ChevronRight } from 'react-feather';
 import { useLocalStorage } from 'react-use';
@@ -71,9 +71,16 @@ const RenderResults: FC = () => {
   return <KBarResults items={results} onRender={onRender} />;
 };
 
+export const PingContext = createContext<any[]>([]);
+export const ThemeContext = createContext<any[]>([]);
+
 const CommandBar = ({ children }: { children: ReactNode }) => {
   const { push } = useRouter();
-  const [theme, setTheme, removeTheme] = useLocalStorage<string | undefined>('theme', undefined);
+  const [kbarOpened, setKbarOpened] = useState(false);
+  const ePush = (url: string) => window.open(url, '_blank');
+  const [theme, setTheme, removeTheme] = useLocalStorage<string | undefined>('theme', 'dark');
+  const [isDark, setIsDark] = useState(true);
+
   const actions = [
     {
       id: 'home',
@@ -88,20 +95,6 @@ const CommandBar = ({ children }: { children: ReactNode }) => {
       name: 'Blog',
       keywords: 'blog',
       section: 'Pages',
-    },
-    {
-      id: 'projects',
-      name: 'Projects',
-      keywords: 'projects',
-      section: 'Pages',
-    },
-    {
-      id: 'work',
-      name: 'Work',
-      shortcut: ['w'],
-      keywords: 'work',
-      section: 'Pages',
-      perform: async () => push('/work'),
     },
     {
       id: 'resume',
@@ -157,13 +150,15 @@ const CommandBar = ({ children }: { children: ReactNode }) => {
     keywords: id,
     icon: <Image src={`/social/${id}.svg`} width={16} height={16} layout="fixed" quality={100} alt="" />,
     section: 'Social',
-    perform: async () => push(url),
+    perform: async () => ePush(url),
   }));
 
   useEffect(() => {
     if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
+      setIsDark(true);
     } else {
+      setIsDark(false);
       document.documentElement.classList.remove('dark');
     }
   }, [theme]);
@@ -173,12 +168,14 @@ const CommandBar = ({ children }: { children: ReactNode }) => {
       <KBarPortal>
         <KBarPositioner className="z-30 bg-white/80 backdrop-blur-sm dark:bg-black/80">
           <KBarAnimator className="mx-auto w-full max-w-xl overflow-hidden rounded-lg bg-white drop-shadow-2xl dark:bg-neutral-900">
-            <KBarSearch className="font-md w-full border-b border-neutral-100 bg-transparent py-3 px-4 font-normal text-neutral-900 outline-none dark:border-neutral-800 dark:text-white" />
+            <KBarSearch className="font-md w-full border-b border-neutral-100 bg-transparent py-4 px-4 font-normal text-neutral-900 outline-none dark:border-neutral-800 dark:text-white" />
             <RenderResults />
           </KBarAnimator>
         </KBarPositioner>
       </KBarPortal>
-      {children}
+      <PingContext.Provider value={[kbarOpened, setKbarOpened]}>
+        <ThemeContext.Provider value={[isDark, setIsDark]}>{children}</ThemeContext.Provider>
+      </PingContext.Provider>
     </KBarProvider>
   );
 };

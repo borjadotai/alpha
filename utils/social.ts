@@ -7,39 +7,39 @@ type SocialPlatform = {
 
 export const social: SocialPlatform[] = [
   {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/borjadotai',
+    invertDark: false,
+  },
+  {
     id: 'twitter',
     name: 'Twitter',
-    url: 'https://twitter.com/haydenbleasel',
-    invertDark: false,
-  },
-  {
-    id: 'dribbble',
-    name: 'Dribbble',
-    url: 'https://dribbble.com/haydenbleasel',
-    invertDark: false,
-  },
-  {
-    id: 'instagram',
-    name: 'Instagram',
-    url: 'https://www.instagram.com/hayden.bleasel/',
+    url: 'https://twitter.com/borjadotai',
     invertDark: false,
   },
   {
     id: 'github',
     name: 'GitHub',
-    url: 'https://github.com/haydenbleasel/',
+    url: 'https://github.com/borjadotai',
     invertDark: true,
-  },
-  {
-    id: 'linkedin',
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/haydenbleasel',
-    invertDark: false,
   },
   {
     id: 'producthunt',
     name: 'ProductHunt',
-    url: 'https://www.producthunt.com/@haydenbleasel',
+    url: 'https://www.producthunt.com/@borjadotai',
+    invertDark: false,
+  },
+  {
+    id: 'dribbble',
+    name: 'Dribbble',
+    url: 'https://dribbble.com/borjadotai',
+    invertDark: false,
+  },
+  {
+    id: 'instagram',
+    name: 'Instagram',
+    url: 'https://www.instagram.com/borjadotai',
     invertDark: false,
   },
 ];
