@@ -14,6 +14,7 @@
     "@notionhq/client": "^1.0.4",
     "framer-motion": "^6.3.2",
     "highlight.js": "^11.5.1",
+    "kbar": "^0.1.0-beta.34",
     "marked": "^4.0.14",
     "next": "12.1.5",
     "next-seo": "^5.4.0",
@@ -21,6 +22,9 @@
     "prismjs": "^1.28.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-feather": "^2.0.9",
+    "react-hot-toast": "^2.2.0",
+    "react-use": "^17.3.2",
     "rgt": "^1.0.7"
   },
   "devDependencies": {

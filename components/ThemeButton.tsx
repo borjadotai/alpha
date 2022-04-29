@@ -1,5 +1,5 @@
-import React, { ButtonHTMLAttributes } from 'react';
-import { useTheme } from 'next-themes';
+import React, { ButtonHTMLAttributes, useEffect } from 'react';
+import { useLocalStorage } from 'react-use';
 import FadeIn from './FadeIn';
 
 const SunIcon = () => (
@@ -36,8 +36,16 @@ const MoonIcon = () => (
   </svg>
 );
 
-export default function ThemeFunction({ ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
-  const { theme, setTheme } = useTheme();
+export default function ThemeButton({ ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
+  const [theme, setTheme] = useLocalStorage<string | undefined>('theme');
+
+  useEffect(() => {
+    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
 
   return (
     <button

@@ -12,6 +12,7 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
     if (type === 'bookmark' && block.bookmark)
       return (
         <Bookmark
+          key={block.id}
           image={block.bookmark['og:image']}
           title={block.bookmark['og:title']}
           description={block.bookmark['og:description']}

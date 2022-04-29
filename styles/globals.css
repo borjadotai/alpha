@@ -2,19 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
+::selection {
+  @apply bg-green-300 text-black;
+}
+
+html {
+  min-width: 360px;
+  scroll-behavior: smooth;
+}
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  @apply font-sans text-lg text-black dark:text-white;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.post {
+  @apply font-sans text-lg text-black dark:text-white;
 }
 
-* {
-  box-sizing: border-box;
+.book span {
+  @apply rounded-md hover:border hover:border-green-500;
+}
+
+.post p {
+  @apply my-2 text-gray-700 dark:text-gray-400;
+}
+
+.post hr {
+  @apply border-gray-300 dark:border-gray-800;
+}
+
+.post ul {
+  @apply my-6;
+}
+
+.post h1 {
+  @apply text-3xl dark:text-white;
+}
+
+.post h3 {
+  @apply mt-4 mb-2 text-xl font-semibold;
+}
+
+.post mark {
+  @apply px-1 bg-yellow-200 rounded-md;
+}
+
+.post blockquote {
+  @apply my-2 border-l-4 border-red-400 pl-4;
+}
+
+.post .img {
+  @apply rounded-md my-4;
+}
+
+.post iframe {
+  @apply w-full h-96 rounded-md my-4;
+}
+
+.post figcaption {
+  @apply mt-1 text-base text-center mb-4;
+}
+
+.post figure .kg-bookmark-container {
+  @apply rounded-md bg-dark-1 border border-gray-900 shadow-lg flex flex-row justify-between hover:border-green-500;
+}
+
+.post figure .kg-bookmark-content {
+  @apply flex flex-col max-w-md p-3;
+}
+
+.post figure .kg-bookmark-title {
+  @apply text-gray-300 font-semibold text-lg;
+}
+
+.post figure .kg-bookmark-title {
+  @apply text-gray-300 font-semibold text-lg;
+}
+
+.post figure .kg-bookmark-description {
+  @apply text-gray-500 text-base mt-1;
+}
+
+.post figure .kg-bookmark-metadata {
+  @apply hidden;
+}
+
+.post figure .kg-bookmark-thumbnail img {
+  @apply w-44 h-full object-cover m-0 p-0 rounded-tl-none rounded-bl-none;
 }
