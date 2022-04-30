@@ -96,8 +96,12 @@ body {
   @apply w-44 h-full object-cover m-0 p-0 rounded-tl-none rounded-bl-none;
 }
 
-.post code {
+.post span code {
   @apply leading-loose;
+}
+
+.post code span {
+  @apply font-light text-base leading-tight;
 }
 
 .post [notion-color='green'] code {

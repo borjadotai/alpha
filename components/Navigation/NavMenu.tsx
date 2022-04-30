@@ -1,4 +1,4 @@
-import React, { KeyboardEventHandler, useContext, useState } from 'react';
+import React, { KeyboardEventHandler, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useKBar } from 'kbar';
@@ -22,9 +22,8 @@ function MenuItem({ active = false, href, children }: { active?: boolean; href: 
   );
 }
 
-export default function NavMenu() {
+export const KButton = () => {
   const [kbarOpened, setKbarOpened] = useContext(PingContext);
-  const router = useRouter();
   const kbar = useKBar();
 
   const keyDownHandler: KeyboardEventHandler<HTMLDivElement> = (event) => {
@@ -40,7 +39,7 @@ export default function NavMenu() {
     kbar.query.toggle();
   };
 
-  const KButton = () => (
+  return (
     <div className="relative">
       {!kbarOpened && (
         <span className="absolute flex h-1 w-1 -right-1 sm:right-1">
@@ -59,6 +58,10 @@ export default function NavMenu() {
       </div>
     </div>
   );
+};
+
+export default function NavMenu() {
+  const router = useRouter();
 
   return (
     <div className="flex flex-row space-x-2">

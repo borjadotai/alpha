@@ -67,6 +67,11 @@ interface TodoBlock {
   rich_text: RichText[];
 }
 
+interface CodeBlock {
+  language: string;
+  rich_text: RichText[];
+}
+
 export interface Block {
   id: string; // "284546ad-c84b-40a6-9ff1-d608378b0387"
   type: BlockType;
@@ -85,6 +90,7 @@ export interface Block {
   };
   bookmark?: BookmarkBlock;
   to_do?: TodoBlock;
+  code?: CodeBlock;
   child_page?: ChildPageBlock;
   heading_1?: Heading;
   heading_2?: Heading;
@@ -125,6 +131,7 @@ export type BlockType =
   | 'link_to_page'
   | 'table'
   | 'table_row'
+  | 'code'
   | 'unsupported';
 
 export interface PageProperties {

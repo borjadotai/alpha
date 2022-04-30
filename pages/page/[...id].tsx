@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Main from '../../components/Main';
 import { Meta } from '../../components/Meta';
+// import StickyTitle from '../../components/stickyTitle';
 import { notion } from '../../lib/notionBlocks';
 import { RenderBlocks } from '../../lib/notionBlocks/render';
 import { Block, PageProperties } from '../../lib/notionBlocks/types';
@@ -21,6 +22,7 @@ const Page = ({ pageProperties, pageBlocks }: PageProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      {/* <StickyTitle>{title || ''}</StickyTitle> */}
       <main className="post">
         <h1>{title}</h1>
         <RenderBlocks blocks={pageBlocks} />

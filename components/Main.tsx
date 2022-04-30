@@ -1,9 +1,6 @@
-import { useKBar } from 'kbar';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode } from 'react';
 
 import FadeIn from '../components/FadeIn';
-import HamburgerButton from '../components/Navigation/HamburgerButton';
-import Menu from '../components/Navigation/Menu';
 import NavMenu from '../components/Navigation/NavMenu';
 import IconButton from '../components/ThemeButton';
 
@@ -14,14 +11,6 @@ type IMainProps = {
 };
 
 export default function Main({ meta, children }: IMainProps) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const kbar = useKBar();
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-    kbar.query.toggle();
-  };
-
   return (
     <div className="min-h-screen antialiased w-full text-gray-700 dark:text-gray-500 bg-white dark:bg-black">
       {meta}
@@ -29,7 +18,6 @@ export default function Main({ meta, children }: IMainProps) {
         <div className="pt-8 pb-4 sm:pb-8 flex flex-row w-full justify-between items-center flex-grow-0">
           <IconButton />
           <NavMenu />
-          {/* <HamburgerButton isOpen={isMenuOpen} toggle={toggleMenu} strokeWidth="2" width="24" height="24" /> */}
         </div>
 
         <main className="min-h-full flex-grow">
