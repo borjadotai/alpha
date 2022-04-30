@@ -11,7 +11,7 @@ interface PageProps {
   pageBlocks: Block[];
 }
 
-const Tech = ({ pageProperties, pageBlocks }: PageProps) => {
+const Work = ({ pageProperties, pageBlocks }: PageProps) => {
   const title = pageProperties.properties.title?.title?.[0]?.plain_text;
   const Headers = <Meta title="Borja" description="Technology. Product. Design." />;
   const gGradient = { dir: 'left-to-right', from: '#a8ff78', to: '#78ffd6' };
@@ -35,7 +35,7 @@ const Tech = ({ pageProperties, pageBlocks }: PageProps) => {
 };
 
 export async function getStaticProps() {
-  const url = 'https://www.notion.so/borjadotai/Tech-f4bd942992cc48a29bbd62b6754b5a9f';
+  const url = 'https://www.notion.so/borjadotai/Work-c4d863c3cac848a4b17dfdfafb8d0d08';
   const pageId = notion.getPageId(url);
   const pageProperties = await notion.getPageProperties(pageId);
   const pageBlocks = await notion.getPageBlocks(pageId);
@@ -49,4 +49,4 @@ export async function getStaticProps() {
   };
 }
 
-export default Tech;
+export default Work;

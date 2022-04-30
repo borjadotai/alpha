@@ -23,7 +23,7 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
       case 'to_do':
         return <TodoEl {...block} />;
       case 'divider':
-        return <Divider />;
+        return <Divider {...block} />;
       default:
         return <p>other</p>;
     }
@@ -48,7 +48,7 @@ const ChildPageEl = (block: Block) =>
   ) : null;
 
 const ParagraphEl = (block: Block) => (
-  <div key={block.id} dangerouslySetInnerHTML={{ __html: BlockParser.parse([block]) || `<br />` }} />
+  <span key={block.id} dangerouslySetInnerHTML={{ __html: BlockParser.parse([block]) || `<br />` }} />
 );
 
 const HeadingEl = (block: Block) => (
@@ -57,4 +57,4 @@ const HeadingEl = (block: Block) => (
 
 const TodoEl = (block: Block) => <Todo key={block.id} blockparser={BlockParser} block={block} />;
 
-const Divider = () => <hr className="border-0.5 border-gray-900 my-4" />;
+const Divider = (block: Block) => <hr key={block.id} className="border-0.5 border-gray-900 my-4" />;

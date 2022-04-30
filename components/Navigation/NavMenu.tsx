@@ -66,6 +66,9 @@ export default function NavMenu() {
         <MenuItem active={router.asPath === '/'} href="/">
           Home
         </MenuItem>
+        <MenuItem active={router.asPath === '/work'} href="/work">
+          Work
+        </MenuItem>
         <MenuItem active={router.asPath.includes('blog')} href="/blog">
           Blog
         </MenuItem>

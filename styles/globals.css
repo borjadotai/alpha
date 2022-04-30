@@ -96,6 +96,26 @@ body {
   @apply w-44 h-full object-cover m-0 p-0 rounded-tl-none rounded-bl-none;
 }
 
+.post code {
+  @apply leading-loose;
+}
+
+.post [notion-color='green'] code {
+  @apply text-green-500 bg-green-300 dark:bg-green-500 dark:text-green-300 bg-opacity-20 dark:bg-opacity-20 rounded-md text-base py-1 px-2 font-medium;
+}
+
+.post [notion-color='red'] code {
+  @apply text-red-500 bg-red-300 dark:bg-red-500 dark:text-red-300 bg-opacity-20 dark:bg-opacity-20 rounded-md text-base py-1 px-2 font-medium;
+}
+
+.post [notion-color='yellow'] code {
+  @apply text-yellow-500 bg-yellow-300 dark:bg-yellow-500 dark:text-yellow-300 bg-opacity-20 dark:bg-opacity-20 rounded-md text-base py-1 px-2 font-medium;
+}
+
+.post [notion-color='blue'] code {
+  @apply text-blue-500 bg-blue-300 dark:bg-blue-500 dark:text-blue-300 bg-opacity-20 dark:bg-opacity-20 rounded-md text-base py-1 px-2 font-medium;
+}
+
 /* EXECEPTIONS BY ID */
 .post #todo p {
   @apply my-2 text-gray-900 dark:text-gray-200;
