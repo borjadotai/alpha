@@ -32,10 +32,6 @@ body {
   @apply border-gray-300 dark:border-gray-800;
 }
 
-.post ul {
-  @apply my-6;
-}
-
 .post h1 {
   @apply text-3xl dark:text-white;
 }
