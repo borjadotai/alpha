@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import FadeIn from '../components/FadeIn';
 import NavMenu from '../components/Navigation/NavMenu';
 import IconButton from '../components/ThemeButton';
+import Loading from './Navigation/Loading';
 
 type IMainProps = {
   bg?: boolean;
@@ -21,9 +22,11 @@ export default function Main({ meta, children }: IMainProps) {
         </div>
 
         <main className="min-h-full flex-grow">
-          <FadeIn>
-            <div className="py-2 text-xl content">{children}</div>
-          </FadeIn>
+          <Loading>
+            <FadeIn>
+              <div className="py-2 text-xl content">{children}</div>
+            </FadeIn>
+          </Loading>
         </main>
 
         <div className="text-center py-8 text-sm flex flex-col flex-grow-0" id="end-of-page">
