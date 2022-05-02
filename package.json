@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^12.1.5",
     "@notion-stuff/blocks-html-parser": "^6.0.0",
     "@notion-stuff/blocks-markdown-parser": "^6.0.0",
     "@notionhq/client": "^1.0.4",
@@ -26,7 +27,8 @@
     "react-hot-toast": "^2.2.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.3.2",
-    "rgt": "^1.0.7"
+    "rgt": "^1.0.7",
+    "sharp": "^0.30.4"
   },
   "devDependencies": {
     "@types/node": "17.0.25",

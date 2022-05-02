@@ -8,14 +8,12 @@ function MenuItem({ active = false, href, children }: { active?: boolean; href: 
   return (
     <li className="w-full text-center">
       <Link href={href}>
-        <a>
-          <span
-            className={`hidden font-medium ${
-              active ? 'text-gray-900 dark:text-gray-200' : 'text-gray-600 dark:text-gray-400'
-            } md:inline-block p-1 sm:px-3 sm:py-2 rounded-md hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-10 transition-all`}
-          >
-            {children}
-          </span>
+        <a
+          className={`hidden font-medium ${
+            active ? 'text-gray-900 dark:text-gray-200' : 'text-gray-600 dark:text-gray-400'
+          } md:inline-block p-1 sm:px-3 sm:py-2 rounded-md hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-10 transition-all`}
+        >
+          {children}
         </a>
       </Link>
     </li>

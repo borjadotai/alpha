@@ -14,6 +14,8 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
   // console.log({ blocks });
   const elements = blocks.map((block) => {
     switch (block.type) {
+      case 'paragraph':
+        return <ParagraphEl {...block} />;
       case 'heading_3':
       case 'heading_2':
       case 'heading_1':
@@ -22,8 +24,6 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
         return <BookmarkEl {...block} />;
       case 'child_page':
         return <ChildPageEl {...block} />;
-      case 'paragraph':
-        return <ParagraphEl {...block} />;
       case 'to_do':
         return <TodoEl {...block} />;
       case 'divider':
@@ -37,7 +37,7 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
       case 'bulleted_list_item':
         return <ParagraphEl {...block} />;
       default:
-        return <p>other</p>;
+        return <p key={block.id}>other</p>;
     }
   });
   return <div className="post">{elements}</div>;
@@ -64,7 +64,7 @@ const ParagraphEl = (block: Block) => (
 );
 
 const HeadingEl = (block: Block) => (
-  <span key={block.id} dangerouslySetInnerHTML={{ __html: BlockParser.parse([block]) }} />
+  <div key={block.id} dangerouslySetInnerHTML={{ __html: BlockParser.parse([block]) }} />
 );
 
 const TodoEl = (block: Block) => <Todo key={block.id} blockparser={BlockParser} block={block} />;

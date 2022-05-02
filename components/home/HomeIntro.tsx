@@ -14,9 +14,10 @@ const ProductGradient = () => <GradientText highlight bg={rGradient}>{`product d
 
 export default function HomeIntro() {
   const [isDark, _] = useContext(ThemeContext);
-  const darkLogos = '/assets/images/companies.png';
-  const lightLogos = '/assets/images/companies-light.png';
+  const darkLogos = '/assets/images/companies.webp';
+  const lightLogos = '/assets/images/companies-light.webp';
   const logosUrl = isDark ? darkLogos : lightLogos;
+
   return (
     <div className="mt-6 sm:mt-4 flex flex-col justify-start items-start text-center sm:text-left">
       <div className="flex flex-col-reverse sm:flex-row items-center sm:justify-between w-full">
@@ -30,11 +31,11 @@ export default function HomeIntro() {
         </div>
         <div className="w-32 h-32">
           <Image
-            src="/assets/images/me.jpeg"
+            src="/assets/images/me.webp"
             blurDataURL="/assets/images/me.jpeg"
             alt="Picture of Borja Leiva"
-            width={120}
-            height={120}
+            width={240}
+            height={240}
             className="rounded-xl"
             placeholder="blur"
           />
@@ -44,7 +45,7 @@ export default function HomeIntro() {
         I’m a product engineer, originally from Spain, currently based in London. <br /> Software engineer by trade with
         a passion for <BusinessGradient /> {' & '} <ProductGradient />.
       </p>
-      <p className="w-full text-gray-600 text-sm mt-10 mb-3">SOME COMPANIES I HAVE DONE WORK FOR</p>
+      <p className="w-full text-gray-500 text-sm mt-10 mb-3">SOME COMPANIES I HAVE DONE WORK FOR</p>
       <div className="w-full flex items-center border-t border-neutral-200 dark:border-neutral-900 pt-8">
         <Image
           src={logosUrl}
@@ -57,7 +58,7 @@ export default function HomeIntro() {
       </div>
       <a
         href="#end-of-page"
-        className="mt-8 mb-4 border-t border-neutral-200 dark:border-neutral-900 pt-10 pb-4 flex flex-col w-full items-center text-gray-600"
+        className="mt-8 mb-4 border-t border-neutral-200 dark:border-neutral-900 pt-10 pb-4 flex flex-col w-full items-center text-gray-500"
       >
         <p>Read my life story from the early days all the way til today.</p>
         <ChevronDown size={24} aria-label="Activity Info" />
