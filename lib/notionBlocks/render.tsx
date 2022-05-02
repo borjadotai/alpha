@@ -99,4 +99,5 @@ const CodeEl = (block: Block) => {
   );
 };
 
-const ImageEl = (block: Block) => <img alt="image" src={block.image?.external.url} />;
+// eslint-disable-next-line @next/next/no-img-element
+const ImageEl = (block: Block) => <img alt="image" className="img" src={block.image?.external.url} />;

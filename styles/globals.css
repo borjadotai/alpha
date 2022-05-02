@@ -124,6 +124,10 @@ body {
   @apply text-blue-500 bg-blue-300 dark:bg-blue-500 dark:text-blue-300 bg-opacity-20 dark:bg-opacity-20 rounded-md text-base py-1 px-2 font-medium;
 }
 
+.post [notion-color='purple'] code {
+  @apply text-purple-500 bg-purple-300 dark:bg-purple-500 dark:text-purple-300 bg-opacity-20 dark:bg-opacity-20 rounded-md text-base py-1 px-2 font-medium;
+}
+
 /* EXECEPTIONS BY ID */
 .post #todo p {
   @apply my-2 text-gray-900 dark:text-gray-200;
