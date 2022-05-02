@@ -96,6 +96,10 @@ body {
   @apply w-44 h-full object-cover m-0 p-0 rounded-tl-none rounded-bl-none;
 }
 
+.post ul li {
+  @apply list-disc list-inside text-gray-700 dark:text-gray-400;
+}
+
 .post span code {
   @apply leading-loose;
 }

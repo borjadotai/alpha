@@ -72,6 +72,19 @@ interface CodeBlock {
   rich_text: RichText[];
 }
 
+interface ImageBlock {
+  caption: unknown;
+  external: {
+    url: string;
+  };
+  type: string; // "external"
+}
+
+interface BulletBlock {
+  color: string;
+  rich_text: RichText[];
+}
+
 export interface Block {
   id: string; // "284546ad-c84b-40a6-9ff1-d608378b0387"
   type: BlockType;
@@ -91,6 +104,8 @@ export interface Block {
   bookmark?: BookmarkBlock;
   to_do?: TodoBlock;
   code?: CodeBlock;
+  image?: ImageBlock;
+  bulleted_list_item: BulletBlock;
   child_page?: ChildPageBlock;
   heading_1?: Heading;
   heading_2?: Heading;

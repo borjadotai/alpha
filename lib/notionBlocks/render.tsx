@@ -5,7 +5,6 @@ import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 
 import ChildPage from '../../components/notion/ChildPage';
 import Bookmark from '../../components/notion/Bookmark';
-import tailwindConfig from '../../tailwind.config';
 import Todo from '../../components/notion/Todo';
 import { Block } from './types';
 
@@ -31,6 +30,12 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
         return <Divider {...block} />;
       case 'code':
         return <CodeEl {...block} />;
+      case 'image':
+        return <ImageEl {...block} />;
+      case 'quote':
+        return <ParagraphEl {...block} />;
+      case 'bulleted_list_item':
+        return <ParagraphEl {...block} />;
       default:
         return <p>other</p>;
     }
@@ -93,3 +98,5 @@ const CodeEl = (block: Block) => {
     </div>
   );
 };
+
+const ImageEl = (block: Block) => <img alt="image" src={block.image?.external.url} />;
