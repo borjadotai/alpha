@@ -55,6 +55,7 @@ export async function getStaticProps({ params }: { params: Record<string, string
       pageProperties,
       pageBlocks: pageBlocks,
     },
+    revalidate: 10,
   };
 }
 
