@@ -13,6 +13,7 @@
     "@notion-stuff/blocks-html-parser": "^6.0.0",
     "@notion-stuff/blocks-markdown-parser": "^6.0.0",
     "@notionhq/client": "^1.0.4",
+    "@supabase/supabase-js": "^1.35.3",
     "framer-motion": "^6.3.2",
     "highlight.js": "^11.5.1",
     "kbar": "^0.1.0-beta.34",

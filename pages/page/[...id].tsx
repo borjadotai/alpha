@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Main from '../../components/Main';
 import { Meta } from '../../components/Meta';
-// import StickyTitle from '../../components/stickyTitle';
-import { notion } from '../../lib/notionBlocks';
+import { supabase } from '../../lib/supabase';
 import { RenderBlocks } from '../../lib/notionBlocks/render';
+import { DbPage, PageIds } from '../../lib/supabase/db.types';
 import { Block, PageProperties } from '../../lib/notionBlocks/types';
 
 interface PageProps {
@@ -22,7 +22,6 @@ const Page = ({ pageProperties, pageBlocks }: PageProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <StickyTitle>{title || ''}</StickyTitle> */}
       <main className="post">
         <h1>{title}</h1>
         <RenderBlocks blocks={pageBlocks} />
@@ -32,32 +31,30 @@ const Page = ({ pageProperties, pageBlocks }: PageProps) => {
 };
 
 export async function getStaticPaths() {
-  const url = 'Front-End-Development-56c48726a7ee40918bb6359576452f49';
-  const pageId = notion.getPageId(url);
-  const pagePaths = await notion.getAllPaths(pageId);
+  const { data, error } = await supabase.from('pages').select('id');
+  if (error) throw new Error(error.message);
+  const pageIds: PageIds = data;
 
-  const paths = pagePaths.map((page) => ({
-    params: { id: [page] },
+  const paths = pageIds.map(({ id }) => ({
+    params: { id: [id] },
   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: blocking } will server-render pages
-  // on-demand if the path doesn't exist.
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }: { params: Record<string, string> }) {
-  const pageId = params.id;
-  const pageProperties = await notion.getPageProperties(pageId);
-  const pageBlocks = await notion.getPageBlocks(pageId);
-  const parsedBlocks = await notion.populateBlockData(pageBlocks.results as Block[]);
+  const { data, error } = await supabase.from('pages').select('*').eq('id', params.id);
+  if (error) throw new Error(error?.message);
+
+  const dbPage: DbPage = data?.[0];
+  const pageProperties = dbPage?.meta;
+  const pageBlocks = dbPage?.content;
 
   return {
     props: {
       pageProperties,
-      pageBlocks: parsedBlocks,
+      pageBlocks: pageBlocks,
     },
-    revalidate: 10,
   };
 }
 

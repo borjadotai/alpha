@@ -15,27 +15,27 @@ export function RenderBlocks({ blocks }: { blocks: Block[] }) {
   const elements = blocks.map((block) => {
     switch (block.type) {
       case 'paragraph':
-        return <ParagraphEl {...block} />;
+        return <ParagraphEl key={block.id} {...block} />;
       case 'heading_3':
       case 'heading_2':
       case 'heading_1':
-        return <HeadingEl {...block} />;
+        return <HeadingEl key={block.id} {...block} />;
       case 'bookmark':
-        return <BookmarkEl {...block} />;
+        return <BookmarkEl key={block.id} {...block} />;
       case 'child_page':
-        return <ChildPageEl {...block} />;
+        return <ChildPageEl key={block.id} {...block} />;
       case 'to_do':
-        return <TodoEl {...block} />;
+        return <TodoEl key={block.id} {...block} />;
       case 'divider':
-        return <Divider {...block} />;
+        return <Divider key={block.id} {...block} />;
       case 'code':
-        return <CodeEl {...block} />;
+        return <CodeEl key={block.id} {...block} />;
       case 'image':
-        return <ImageEl {...block} />;
+        return <ImageEl key={block.id} {...block} />;
       case 'quote':
-        return <ParagraphEl {...block} />;
+        return <ParagraphEl key={block.id} {...block} />;
       case 'bulleted_list_item':
-        return <ParagraphEl {...block} />;
+        return <ParagraphEl key={block.id} {...block} />;
       default:
         return <p key={block.id}>other</p>;
     }
@@ -100,4 +100,4 @@ const CodeEl = (block: Block) => {
 };
 
 // eslint-disable-next-line @next/next/no-img-element
-const ImageEl = (block: Block) => <img alt="image" className="img" src={block.image?.external.url} />;
+const ImageEl = (block: Block) => <img alt="image" className="img" src={block.image?.external?.url} />;

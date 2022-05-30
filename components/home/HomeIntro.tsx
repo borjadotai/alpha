@@ -32,7 +32,7 @@ export default function HomeIntro() {
         <div className="w-32 h-32">
           <Image
             src="/assets/images/me.webp"
-            blurDataURL="/assets/images/me.jpeg"
+            blurDataURL="/assets/images/me.webp"
             alt="Picture of Borja Leiva"
             width={240}
             height={240}

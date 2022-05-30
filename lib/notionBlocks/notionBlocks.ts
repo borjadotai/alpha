@@ -20,7 +20,7 @@ export default class NotionBlocks {
   public getPageBlocks(id: string): Promise<BlockChildren> {
     return this.notionAPI.blocks.children.list({
       block_id: id,
-      page_size: 50,
+      page_size: 100,
     });
   }
 
