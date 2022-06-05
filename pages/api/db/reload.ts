@@ -11,6 +11,7 @@ async function populatePages(pageId: string) {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.status(200).send('DB reload started!');
   const url = 'borja-ai-5ab6be8a87774338863120b0591c04a5';
   const pageId = notion.getPageId(url);
   const pagePaths = await notion.getAllPaths(pageId);
@@ -20,6 +21,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const pages = await Promise.all(promises);
   const { error } = await supabase.from('pages').upsert(pages);
 
-  if (error) res.status(500).json(error);
-  res.status(200).send('Succesfully updated DB with latest Notion data.');
+  if (error) console.log(error);
 }
